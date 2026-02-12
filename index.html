@@ -5,43 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Delícias da Vovó</title>
     <style>
-        /* Bloqueia qualquer movimento lateral na página principal */
-        body, html { 
-            margin: 0 !important; 
-            padding: 0 !important; 
-            width: 100% !important; 
-            height: 100% !important; 
-            overflow-x: hidden !important; 
-            background-color: #000; /* Ajuda a não ver bordas brancas enquanto carrega */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            border: none;
+            overflow-x: hidden;
         }
-        /* O segredo para o Iframe não vazar: max-width 100% */
-        iframe { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100% !important; 
-            min-width: 100% !important;
-            max-width: 100% !important;
-            height: 100% !important; 
-            border: none !important;
-        }
-        .safe-content { padding: 20px; color: #fff; font-family: sans-serif; }
+        .safe { padding: 20px; color: white; font-family: sans-serif; }
     </style>
 </head>
 <body>
 
 <script>
-    const currentHost = window.location.hostname;
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
+    const isMetodo = window.location.hostname.includes('metodo');
 
-    if (currentHost.includes('metodo') && !isBot) {
-        document.body.innerHTML = '<iframe src="https://protocoloemagrecimentodivino.lovable.app/" allowfullscreen></iframe>';
+    if (isMetodo && !isBot) {
+        // Criando o iframe via JS para garantir o ajuste de tela
+        const ifrm = document.createElement("iframe");
+        ifrm.src = "https://protocoloemagrecimentodivino.lovable.app/";
+        document.body.innerHTML = ""; // Limpa o bolo para o humano
+        document.body.appendChild(ifrm);
     }
 </script>
 
-<div class="safe-content">
+<div class="safe">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Receita tradicional...</p>
+    <p>Receita tradicional da família...</p>
 </div>
 
 </body>
