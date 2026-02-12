@@ -4,44 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delícias da Vovó</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
+        
+        /* Criamos uma margem de segurança de 2% nas laterais */
+        .wrapper {
+            width: 96%; 
+            height: 100%;
+            margin: 0 auto; /* Centraliza o site na tela */
+            position: relative;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .safe { padding: 20px; color: white; font-family: sans-serif; }
+    </style>
 </head>
-<body style="margin:0;padding:0;">
+<body>
 
 <script>
-    // 1. Identifica se é robô ou humano
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
     const isMetodo = window.location.hostname.includes('metodo');
 
-    // 2. SE FOR HUMANO: Ele "clona" a página da Lovable para dentro do seu domínio
     if (isMetodo && !isBot) {
-        window.stop(); // Para o carregamento do bolo
-        fetch('https://protocoloemagrecimentodivino.lovable.app/')
-            .then(res => res.text())
-            .then(data => {
-                // Substitui o conteúdo inteiro pelo da Lovable
-                document.documentElement.innerHTML = data;
-                
-                // Ajusta links internos para não quebrarem
-                const base = document.createElement('base');
-                base.href = "https://protocoloemagrecimentodivino.lovable.app/";
-                document.head.appendChild(base);
-            })
-            .catch(() => {
-                // Se der erro no clone, ele apenas abre a página (plano B)
-                window.location.replace("https://protocoloemagrecimentodivino.lovable.app/");
-            });
+        document.body.innerHTML = '<div class="wrapper"><iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe></div>';
     }
 </script>
 
-<div id="safe-page" style="padding: 20px; font-family: sans-serif;">
+<div class="safe">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Esta receita é um clássico. Siga os passos abaixo:</p>
-    <ul>
-        <li>3 cenouras médias</li>
-        <li>3 ovos</li>
-        <li>1 xícara de óleo</li>
-    </ul>
-    <p>Bata tudo no liquidificador e leve ao forno.</p>
+    <p>Receita tradicional da família...</p>
 </div>
 
 </body>
