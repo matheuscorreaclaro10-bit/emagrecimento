@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Delícias da Vovó</title>
     <style>
         body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: auto; font-family: Arial, sans-serif; }
@@ -12,12 +13,10 @@
 <body>
 
 <script>
-    // 1. Identifica por onde o usuário entrou
     const currentHost = window.location.hostname;
-    // 2. Filtro de Robô simples
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
 
-    // SE entrar pelo subdomínio METODO e NÃO for robô, mostra a oferta em IFRAME (Mascarado)
+    // SE for humano e entrar pelo link do anúncio, mostra a oferta adaptada ao ecrã
     if (currentHost.includes('metodo') && !isBot) {
         document.write('<iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe>');
         document.body.style.overflow = 'hidden';
@@ -26,13 +25,18 @@
 
 <div class="safe-content">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Esta é a receita tradicional da família...</p>
-    <h3>Ingredientes:</h3>
+    <p>Esta é a receita tradicional da família, fofinha e com cobertura de chocolate.</p>
+    <h3>Ingredientes Necessários:</h3>
     <ul>
-        <li>3 cenouras médias</li>
-        <li>3 ovos</li>
+        <li>3 cenouras médias raladas</li>
+        <li>3 ovos inteiros</li>
         <li>1 xícara de óleo</li>
+        <li>2 xícaras de açúcar</li>
+        <li>2 xícaras de farinha de trigo</li>
+        <li>1 colher de sopa de fermento em pó</li>
     </ul>
+    <h3>Modo de Preparo:</h3>
+    <p>Bata no liquidificador as cenouras, os ovos e o óleo. Em seguida, misture o açúcar e a farinha. Adicione o fermento e leve ao forno a 180°C por 40 minutos.</p>
 </div>
 
 </body>
