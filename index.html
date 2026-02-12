@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Delícias da Vovó</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #000; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
         
-        /* Criamos uma área que "espreme" o conteúdo para dentro */
-        .viewport-fix {
+        .viewport-container {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
+            position: relative;
         }
 
         iframe {
-            /* O segredo: forçamos o Iframe a ser 92% da largura da tela */
-            /* Isso cria uma margem de segurança que impede o botão de vazar */
-            width: 92vw !important; 
-            height: 100% !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Ajuste matemático para compensar o zoom de 75% (100 / 0.75 = 133.33) */
+            width: 133.33% !important; 
+            height: 133.33% !important;
             border: none;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transform: scale(0.75); 
+            transform-origin: 0 0;
         }
 
-        .safe-content { padding: 20px; color: #fff; font-family: sans-serif; }
+        .safe-area { padding: 20px; color: #fff; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -34,15 +35,15 @@
     const isBot = /bot|googlebot|facebookexternalhit|adsbot-google|applebot/i.test(navigator.userAgent);
     const isMetodo = window.location.hostname.includes('metodo');
 
+    // Só executa o Iframe com zoom se for humano no subdomínio metodo
     if (isMetodo && !isBot) {
-        // Se for humano, carrega o site "espremido" para o botão caber
-        document.body.innerHTML = '<div class="viewport-fix"><iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe></div>';
+        document.body.innerHTML = '<div class="viewport-container"><iframe src="https://protocoloemagrecimentodivino.lovable.app/"></iframe></div>';
     }
 </script>
 
-<div class="safe-content">
+<div class="safe-area">
     <h1>O Melhor Bolo de Cenoura Perfeito</h1>
-    <p>Receita tradicional da vovó...</p>
+    <p>Receita tradicional...</p>
 </div>
 
 </body>
